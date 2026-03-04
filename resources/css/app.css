@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.booking-header {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.booking-row {
+    transition: all 0.3s;
+    border-bottom: 1px solid #eee;
+}
+
+.booking-row:hover {
+    background-color: #f5f5f5;
+}
+
+.room-section {
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
