@@ -10,17 +10,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        // Change database and table to use utf8mb4
+   public function up(): void
+{
+    if (DB::getDriverName() !== 'sqlite') {
         DB::statement('ALTER DATABASE ' . env('DB_DATABASE') . ' CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
         
         Schema::table('sermons', function (Blueprint $table) {
-           if (DB::getDriverName() !== 'sqlite') {
-        DB::statement('ALTER DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
-    }
+            DB::statement('ALTER DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
         });
     }
+}
 
     /**
      * Reverse the migrations.
