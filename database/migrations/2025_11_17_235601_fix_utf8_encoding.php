@@ -16,8 +16,9 @@ return new class extends Migration
         DB::statement('ALTER DATABASE ' . env('DB_DATABASE') . ' CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
         
         Schema::table('sermons', function (Blueprint $table) {
-            // Change all text columns to utf8mb4
-            DB::statement('ALTER TABLE sermons CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
+           if (DB::getDriverName() !== 'sqlite') {
+        DB::statement('ALTER DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
+    }
         });
     }
 
